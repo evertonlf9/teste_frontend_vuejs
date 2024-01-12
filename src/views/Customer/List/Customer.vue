@@ -117,7 +117,6 @@ export default defineComponent({
           dataIndex: 'action',
           key: 'action',
           fixed: 'center',
-          width: 200,
         },
       ],
     };

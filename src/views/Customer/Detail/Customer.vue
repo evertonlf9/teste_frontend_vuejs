@@ -9,17 +9,27 @@
             name="name"
             :rules="[{ required: true, message: 'Campo nome do cliente é obrigatório!' }]"
           >
-            <a-input v-model:value="formState.name" placeholder="Digite seu nome" maxLenght="120" />
+            <a-input
+              data-cy="form-name"
+              v-model:value="formState.name"
+              placeholder="Digite seu nome"
+              maxLenght="120"
+            />
           </a-form-item>
           <a-form-item
             label="Documento"
             name="document"
             :rules="[{ required: true, message: 'Campo documento é obrigatório!' }]"
           >
-            <a-input v-model:value="formState.document" placeholder="Digite seu documento" />
+            <a-input
+              data-cy="form-document"
+              v-model:value="formState.document"
+              placeholder="Digite seu documento"
+            />
           </a-form-item>
           <a-form-item label="Telefone">
             <a-input
+              data-cy="form-phone"
               v-model:value="formState.phone"
               placeholder="Digite seu telefone"
               maxLenght="14"
@@ -27,6 +37,7 @@
           </a-form-item>
           <a-form-item label="E-mail">
             <a-input
+              data-cy="form-email"
               v-model:value="formState.email"
               maxLenght="140"
               placeholder="Digite seu e-mail"
@@ -35,6 +46,7 @@
           </a-form-item>
           <a-form-item label="Cliente ativo?">
             <a-switch
+              data-cy="form-active"
               v-model:checked="formState.active"
               checked-children="Sim"
               un-checked-children="Não"
@@ -42,10 +54,15 @@
           </a-form-item>
           <a-form-item>
             <div class="flex justify-items-center w-full footer-form-container">
-              <a-button type="primary" htmlType="submit">
+              <a-button type="primary" htmlType="submit" data-cy="btn-customer-create">
                 {{ consumerId ? 'Editar' : 'Criar' }}
               </a-button>
-              <a-button style="margin-left: 10px" @click="handlerCancel">Cancelar</a-button>
+              <a-button
+                style="margin-left: 10px"
+                data-cy="btn-customer-cancel"
+                @click="handlerCancel"
+                >Cancelar</a-button
+              >
             </div>
           </a-form-item>
         </a-form>
