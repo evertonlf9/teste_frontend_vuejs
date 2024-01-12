@@ -29,10 +29,14 @@
 
         <a-form-item>
           <div class="flex justify-items-center w-full footer-form-container">
-            <a-button type="primary" @click="handlerSave" :disabled="loading">
+            <a-button type="primary" @click="handlerSave" :disabled="loading" data-cy="btn-confirm">
               Associar Produtos
             </a-button>
-            <a-button style="margin-left: 10px" @click="handlerCancel" :disabled="loading"
+            <a-button
+              style="margin-left: 10px"
+              @click="handlerCancel"
+              :disabled="loading"
+              data-cy="btn-cancel"
               >Cancelar</a-button
             >
           </div>
