@@ -5,6 +5,7 @@
       <a-col :xs="{ span: 24, offset: 0 }" :lg="{ span: 12, offset: 6 }">
         <a-form @finish="submitForm" :model="formState">
           <a-form-item
+            data-cy="form-name"
             label="Nome do produto"
             name="name"
             :rules="[{ required: true, message: 'Campo nome do produto é obrigatório!' }]"
@@ -13,6 +14,7 @@
           </a-form-item>
           <a-form-item class="flex" label="Produto ativo?">
             <a-switch
+              data-cy="form-active"
               class="gap-5 left-3"
               v-model:checked="formState.active"
               checked-children="Sim"
@@ -21,10 +23,15 @@
           </a-form-item>
           <a-form-item>
             <div class="flex justify-items-center w-full footer-form-container">
-              <a-button type="primary" htmlType="submit">
+              <a-button type="primary" data-cy="btn-product-create" htmlType="submit">
                 {{ productId ? 'Editar' : 'Criar' }}
               </a-button>
-              <a-button style="margin-left: 10px" @click="handlerCancel">Cancelar</a-button>
+              <a-button
+                style="margin-left: 10px"
+                data-cy="btn-product-cancel"
+                @click="handlerCancel"
+                >Cancelar</a-button
+              >
             </div>
           </a-form-item>
         </a-form>
