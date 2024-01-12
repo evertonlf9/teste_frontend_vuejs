@@ -10,10 +10,11 @@
             </template>
 
             <template v-if="column.key === 'action'">
-              <a-dropdown-button>
+              <a-dropdown>
+                <a-button :data-cy="`customer-open-${record.id}`"><SettingOutlined /></a-button>
                 <template #overlay>
                   <a-menu>
-                    <a-menu-item key="1" @click="editClick(record.id)">
+                    <a-menu-item key="1" data-cy="product-edit" @click="editClick(record.id)">
                       <EditOutlined />
                       Editar
                     </a-menu-item>
@@ -21,6 +22,7 @@
                       <SwapOutlined />
                       <a-popconfirm
                         title="Deseja realmente alterar o estado desse produto?"
+                        data-cy="product-popoup"
                         @confirm="updateClick(record)"
                       >
                         <a>{{ record.active ? 'Desativar' : 'Ativar' }}</a>
@@ -28,7 +30,7 @@
                     </a-menu-item>
                   </a-menu>
                 </template>
-              </a-dropdown-button>
+              </a-dropdown>
             </template>
           </template>
         </a-table>
@@ -41,7 +43,7 @@
 import { defineComponent, onMounted, ref } from 'vue';
 import { IProduct } from '@/services';
 import useProducts from '@/hooks/useProducts';
-import { EditOutlined, SwapOutlined } from '@ant-design/icons-vue';
+import { EditOutlined, SwapOutlined, SettingOutlined } from '@ant-design/icons-vue';
 // eslint-disable-next-line import/no-cycle
 import router from '@/router';
 
@@ -52,6 +54,7 @@ export default defineComponent({
   components: {
     EditOutlined,
     SwapOutlined,
+    SettingOutlined,
   },
   setup() {
     const { getAllProducts, updateStatusProduct } = useProducts();
@@ -97,7 +100,6 @@ export default defineComponent({
           dataIndex: 'action',
           key: 'action',
           fixed: 'center',
-          width: 200,
         },
       ],
     };
