@@ -1,6 +1,6 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
-  <a-card title="Lista de Produtos" :bordered="false">
+  <a-card title="Lista de Clientes" :bordered="false">
     <a-row>
       <a-col :xs="{ span: 24, offset: 0 }" :lg="{ span: 14, offset: 6 }">
         <a-table :columns="columns" bordered :dataSource="dataSource" :rowKey="'id'">
@@ -10,7 +10,8 @@
             </template>
 
             <template v-if="column.key === 'action'">
-              <a-dropdown-button>
+              <a-dropdown>
+                <a-button :data-cy="setDataCyId(record.id)"><SettingOutlined /></a-button>
                 <template #overlay>
                   <a-menu>
                     <a-menu-item key="1" @click="routerEditPage(record.id)">
@@ -32,7 +33,7 @@
                     </a-menu-item>
                   </a-menu>
                 </template>
-              </a-dropdown-button>
+              </a-dropdown>
             </template>
           </template>
         </a-table>
@@ -48,7 +49,8 @@ import { ICustomer } from '@/services';
 // eslint-disable-next-line import/no-cycle
 import useCustomer from '@/hooks/useCustomer';
 
-import { EditOutlined, SwapOutlined, DiffOutlined } from '@ant-design/icons-vue';
+// eslint-disable-next-line object-curly-newline
+import { EditOutlined, SwapOutlined, DiffOutlined, SettingOutlined } from '@ant-design/icons-vue';
 
 const dataSource = ref<ICustomer[]>([]);
 
@@ -58,6 +60,7 @@ export default defineComponent({
     EditOutlined,
     SwapOutlined,
     DiffOutlined,
+    SettingOutlined,
   },
   setup() {
     // eslint-disable-next-line object-curly-newline, operator-linebreak
@@ -74,6 +77,8 @@ export default defineComponent({
       });
     };
 
+    const setDataCyId = (id: string) => `customer-open-${id}`;
+
     onMounted(() => {
       getAllCustomers((data: ICustomer[]) => {
         dataSource.value = data;
@@ -85,6 +90,7 @@ export default defineComponent({
       updateClick,
       routerAssocientePage,
       routerEditPage,
+      setDataCyId,
 
       columns: [
         {

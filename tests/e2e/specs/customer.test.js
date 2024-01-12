@@ -12,10 +12,10 @@ describe('Testing the customer registry page', () => {
     cy.get('.ant-menu > .ant-menu-item').eq(1).click();
     cy.wait(500);
 
-    cy.get('[data-cy="form-name').type('João Silva');
-    cy.get('[data-cy="form-email').type('joaosilva@gmail.com');
-    cy.get('[data-cy="form-phone').type('14 998523514');
-    cy.get('[data-cy="form-document').type('782998523514');
+    cy.get('[data-cy="form-name"]').type('João Silva');
+    cy.get('[data-cy="form-email"]').type('joaosilva@gmail.com');
+    cy.get('[data-cy="form-phone"]').type('14 998523514');
+    cy.get('[data-cy="form-document"]').type('782998523514');
     cy.get('[data-cy="form-active"]').click();
     cy.get('[data-cy="btn-customer-create"]').click();
     cy.wait(500);
@@ -27,10 +27,10 @@ describe('Testing the customer registry page', () => {
     cy.get('.ant-menu > .ant-menu-item').eq(1).click();
     cy.wait(500);
 
-    cy.get('[data-cy="form-name').type('João Silva');
-    cy.get('[data-cy="form-email').type('joaosilva@gmail.com');
-    cy.get('[data-cy="form-phone').type('14 998523514');
-    cy.get('[data-cy="form-document').type('782998523514');
+    cy.get('[data-cy="form-name"]').type('João Silva');
+    cy.get('[data-cy="form-email"]').type('joaosilva@gmail.com');
+    cy.get('[data-cy="form-phone"]').type('14 998523514');
+    cy.get('[data-cy="form-document"]').type('782998523514');
     cy.get('[data-cy="form-active"]').click();
     cy.get('[data-cy="btn-customer-cancel"]').click();
     cy.wait(500);
@@ -42,8 +42,8 @@ describe('Testing the customer registry page', () => {
     cy.get('.ant-menu > .ant-menu-item').eq(1).click();
     cy.wait(500);
 
-    cy.get('[data-cy="form-email').type('joaosilva@gmail.com');
-    cy.get('[data-cy="form-phone').type('14 998523514');
+    cy.get('[data-cy="form-email"]').type('joaosilva@gmail.com');
+    cy.get('[data-cy="form-phone"]').type('14 998523514');
     cy.get('[data-cy="form-active"]').click();
     cy.get('[data-cy="btn-customer-create"]').click();
     cy.wait(500);
